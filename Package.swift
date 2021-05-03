@@ -16,7 +16,7 @@ let package = Package(
             targets: ["DTCoreText"])
     ],
     dependencies: [
-        .package(url: "https://github.com/vincentleclerc/DTFoundation.git", Package.Dependency.Requirement._revisionItem("4b2bf282d08be051c50c1946fd7ac3170cdb66a1"))
+        .package(url: "https://github.com/vincentleclerc/DTFoundation.git", Package.Dependency.Requirement._revisionItem("888456bb8c12ff16888692c021b293daf9f07b0d"))
 //        .package(url: "https://github.com/Cocoanetics/DTFoundation.git", from: "1.7.15"),
     ],
     targets: [
@@ -26,9 +26,13 @@ let package = Package(
                 .product(name: "DTFoundation", package: "DTFoundation"),
             ],
             path: "Core",
-			exclude: ["DTCoreText-Info.plist", "DTCoreText-Prefix.pch"],  
-             resources: [
-            	.copy("Source/default.css")]
+			exclude: ["DTCoreText-Info.plist", "DTCoreText-Prefix.pch"],
+            resources: [
+               .copy("Source/default.css")],
+            cSettings: [
+                .unsafeFlags(["-fembed-bitcode"]),
+                .define("BITCODE_GENERATION_MODE", to: "bitcode")
+            ]
         ),
         .testTarget(
             name: "DTCoreTextTests",
