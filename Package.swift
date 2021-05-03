@@ -16,7 +16,8 @@ let package = Package(
             targets: ["DTCoreText"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Cocoanetics/DTFoundation.git", from: "1.7.15"),
+        .package(url: "https://github.com/Cocoanetics/DTFoundation.git", Package.Dependency.Requirement._revisionItem("ca25a96f5f4fb9cfad2fc45cccc8dc720b13c0be"))
+//        .package(url: "https://github.com/Cocoanetics/DTFoundation.git", from: "1.7.15"),
     ],
     targets: [
         .target(
